@@ -17,6 +17,13 @@ from __future__ import annotations
 
 import os
 import sys
+
+# Ensure UTF-8 output even in standard Windows terminals
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 from datetime import datetime
 from io import StringIO
 from typing import List

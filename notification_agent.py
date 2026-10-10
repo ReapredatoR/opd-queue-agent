@@ -22,6 +22,14 @@ from __future__ import annotations
 
 import json
 import os
+import sys
+
+# Ensure UTF-8 output even in standard Windows terminals
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 import time
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -110,15 +118,15 @@ TEMPLATES: Dict[str, Dict[str, str]] = {
     },
     "doctor_arrived": {
         "en": (
-            "Good news, {name}! Dr. {doctor} has arrived. "
+            "Good news, {name}! {doctor} has arrived. "
             "Your est. wait is now {wait} min. Please be ready."
         ),
         "si": (
-            "සුභ ආරංචි, {name}! Dr. {doctor} පැමිණියා. "
+            "සුභ ආරංචි, {name}! {doctor} පැමිණියා. "
             "ඔබේ බලාපොරොත්තු: {wait} min. සූදානම් වන්න."
         ),
         "ta": (
-            "நற்செய்தி {name}! Dr. {doctor} வந்துவிட்டார். "
+            "நற்செய்தி {name}! {doctor} வந்துவிட்டார். "
             "உங்கள் காத்திருப்பு: {wait} நிமிடம். தயாராக இருங்கள்."
         ),
     },
