@@ -83,22 +83,36 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 ## Running the Application
 
-### Interactive mode (menu-driven)
+### 1. Interactive Web Dashboard (Recommended for Live Demo & Viva)
 ```bash
-python main.py
+python server.py
+# or
+python main.py --web
 ```
+Open **`http://localhost:8000`** in your browser. This provides:
+- Live hospital coordinator queue board (Requirement 1, recalculation <1s)
+- Doctor session controls (Delay 20m, Arrived, Cancel)
+- Interactive smartphone SMS simulator (Requirement 2, trilingual Sinhala/Tamil/English)
+- Inbound patient free-text reply & agentic tool-calling simulation
+- 1-Click 8-step rubric automated demo sequence
+- LLM vs Fallback Template mode toggle (Error/fallback Test 3)
 
-### Automated demo (for a screen capture)
+### 2. Automated CLI Demo (For 4-minute screen capture)
 ```bash
 python main.py --demo
 ```
 
-### Run test suite
+### 3. Interactive CLI Menu
+```bash
+python main.py
+```
+
+### 4. Automated Test Suite (All 3 Tests)
 ```bash
 python test_cases.py
 ```
 
-### Provide API key directly (no .env file needed)
+### 5. Provide Anthropic API key directly
 ```bash
 python main.py --demo --api-key sk-ant-YOUR_KEY_HERE
 ```
@@ -109,14 +123,19 @@ python main.py --demo --api-key sk-ant-YOUR_KEY_HERE
 
 ```
 opd-queue-agent/
-├── main.py                # Entry point (interactive + demo mode)
+├── server.py              # Interactive Web Dashboard (HTTP & JSON API)
+├── main.py                # CLI entry point (interactive, demo & web launch)
 ├── queue_engine.py        # Feature 1 — Live queue engine (rule-based)
-├── notification_agent.py  # Feature 2 — LLM notification agent
-├── test_cases.py          # Three test cases (Week 3)
+├── notification_agent.py  # Feature 2 — LLM notification agent (Claude Haiku 4.5)
+├── test_cases.py          # Three automated test cases (Week 3/4)
 ├── requirements.txt       # Python dependencies
 ├── .env.example           # API key template
-├── .gitignore
-└── README.md
+├── .gitignore             # Git ignore patterns
+├── README.md              # Software requirements, guide & architecture
+├── video.mp4              # Standalone demonstration video (3m 48s, 1080p)
+├── video_poster.png       # Video player preview poster
+├── subtitles.srt          # Synchronized subtitles (SRT format)
+└── subtitles.vtt          # HTML5 WebVTT caption track
 ```
 
 ---
@@ -142,6 +161,12 @@ The following components are **simulated** and clearly declared:
 | SMS/WhatsApp gateway | `SimulatedChannel` — logs to console + SQLite | Text.lk / Dialog SMS / WhatsApp Business API |
 | Booking backend | `SimulatedBookingBackend` — logs actions | Hospital booking system API |
 | Patient phone numbers | Deterministic hash of patient ID | Real patient contact data |
+
+## Sample Login Details (if applicable)
+
+**Not applicable:** This proof-of-concept application and demonstration dashboard (`http://localhost:8000/`) run in open local clinic coordinator mode with zero authentication barriers for seamless evaluation. 
+
+In a production hospital deployment, user authentication would be handled via the hospital's central Active Directory / LDAP single sign-on (SSO) with role-based access control (Coordinator, Triage Nurse, Consultant Doctor).
 
 ---
 

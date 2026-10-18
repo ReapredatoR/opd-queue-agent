@@ -237,12 +237,21 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="OPD Queue Agent")
     parser.add_argument("--demo", action="store_true",
                         help="Run automated demo sequence")
+    parser.add_argument("--web", action="store_true",
+                        help="Launch interactive web dashboard")
+    parser.add_argument("--port", type=int, default=8000,
+                        help="Port for web dashboard (default: 8000)")
     parser.add_argument("--api-key", default="",
                         help="Anthropic API key (overrides env var)")
     args = parser.parse_args()
 
     if args.api_key:
         os.environ["ANTHROPIC_API_KEY"] = args.api_key
+
+    if args.web:
+        from server import run_server
+        run_server(args.port)
+        return
 
     # Bootstrap
     session = make_demo_session()

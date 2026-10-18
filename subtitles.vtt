@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:37.939
+The Problem: Doctor delays cause 45-60 min manual phone calls, crowded waiting areas, and silent ghost slots.
+
+2
+00:00:37.939 --> 00:01:10.150
+Feature 1: Live Queue Engine recalculates all wait times in milliseconds upon doctor delay (Requirement 1 verified).
+
+3
+00:01:10.150 --> 00:01:42.960
+Feature 2: Multilingual Notification Agent dispatches trilingual SMS with 4 actionable options in <3 minutes (R2 verified).
+
+4
+00:01:42.960 --> 00:02:12.500
+Test 1: Patient replies 'Reschedule please' -> Claude Haiku executes tool call -> Booking updated to tomorrow 9 AM.
+
+5
+00:02:12.500 --> 00:02:39.280
+Test 2 Edge Case: Accidental no-show on urgent cardiac patient P005 is intercepted and blocked by Clinical Safety Guard.
+
+6
+00:02:39.280 --> 00:03:06.620
+Test 3 Fallback: Cloud API outage simulated -> Agent engages safe mode and dispatches verified templates with 100% uptime.
+
+7
+00:03:06.620 --> 00:03:48.670
+Feasibility & Costs: Setup LKR 81,000 (~$242) | Monthly LKR 12,700 (~$38) (<1.2% revenue) | 100% PDPA compliant.
